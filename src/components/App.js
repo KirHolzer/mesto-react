@@ -1,17 +1,17 @@
-import React from 'react';
-import '../index.css'
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
-import ImagePopup from './ImagePopup';
-
+import React from "react";
+import "../index.css";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 function App() {
-
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
+    React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
+    React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [currentCard, setCurrentCard] = React.useState({});
 
@@ -35,59 +35,59 @@ function App() {
     setIsImagePopupOpen(true);
     setCurrentCard(card);
   }
-  
 
   return (
     <>
-      <Header/>
+      <Header />
       <Main
-      onEditAvatar={handleEditAvatarClick}
-      onEditProfile={handleEditProfileClick}
-      onAddPlace={handleAddPlaceClick}
-      onCardClick={handleCardClick}
+        onEditAvatar={handleEditAvatarClick}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
-      <Footer/>
+      <Footer />
 
-      <PopupWithForm 
-      name="edit" 
-      title='Редактировать профиль' 
-      isOpen={isEditProfilePopupOpen} 
-      onClose={closeAllPopups} 
-      saveText='Сохранить'>
-      <input
-      className="popup__input popup__input_type_name"
-      id="title-input"
-      type="text"
-      name="name"
-      placeholder="Имя"
-      defaultValue="Жак-Ив Кусто"
-      minLength={2}
-      maxLength={40}
-      required=""
-    />
-    <span className="popup__error title-input-error" />
-    <input
-      className="popup__input popup__input_type_job"
-      id="job-input"
-      type="text"
-      name="job"
-      placeholder="О себе"
-      defaultValue="Исследователь океана"
-      minLength={2}
-      maxLength={200}
-      required=""
-    />
-    <span className="popup__error job-input-error" />
-    </PopupWithForm>
+      <PopupWithForm
+        name="edit"
+        title="Редактировать профиль"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+        saveText="Сохранить"
+      >
+        <input
+          className="popup__input popup__input_type_name"
+          id="title-input"
+          type="text"
+          name="name"
+          placeholder="Имя"
+          defaultValue="Жак-Ив Кусто"
+          minLength={2}
+          maxLength={40}
+          required=""
+        />
+        <span className="popup__error title-input-error" />
+        <input
+          className="popup__input popup__input_type_job"
+          id="job-input"
+          type="text"
+          name="job"
+          placeholder="О себе"
+          defaultValue="Исследователь океана"
+          minLength={2}
+          maxLength={200}
+          required=""
+        />
+        <span className="popup__error job-input-error" />
+      </PopupWithForm>
 
-  <PopupWithForm 
-  name="new-place" 
-  title="Новое место"
-  isOpen={isAddPlacePopupOpen} 
-  onClose={closeAllPopups}
-  saveText="Создать"
-  >
-  <input
+      <PopupWithForm
+        name="new-place"
+        title="Новое место"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        saveText="Создать"
+      >
+        <input
           className="popup__input popup__input_type_name"
           id="name-input"
           type="text"
@@ -107,22 +107,24 @@ function App() {
           required=""
         />
         <span className="popup__error url-input-error" />
-  </PopupWithForm>
+      </PopupWithForm>
 
-  <PopupWithForm 
-  name="delete-card" 
-  title="Вы уверены" 
-  isOpen={null} 
-  onClose={closeAllPopups} 
-  saveText='Да'/>
+      <PopupWithForm
+        name="delete-card"
+        title="Вы уверены"
+        isOpen={null}
+        onClose={closeAllPopups}
+        saveText="Да"
+      />
 
-  <PopupWithForm 
-  name="new-avatar" 
-  title="Обновить аватар" 
-  isOpen={isEditAvatarPopupOpen} 
-  onClose={closeAllPopups} 
-  saveText='Сохранить'>
-    <input
+      <PopupWithForm
+        name="new-avatar"
+        title="Обновить аватар"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+        saveText="Сохранить"
+      >
+        <input
           className="popup__input popup__input_type_job"
           id="link-input"
           type="url"
@@ -134,11 +136,15 @@ function App() {
           required=""
         />
         <span className="popup__error link-input-error" />
-  </PopupWithForm>
+      </PopupWithForm>
 
-  <ImagePopup currentCard={currentCard} isOpen={isImagePopupOpen} onClose={closeAllPopups}/>
-</>
-);
+      <ImagePopup
+        currentCard={currentCard}
+        isOpen={isImagePopupOpen}
+        onClose={closeAllPopups}
+      />
+    </>
+  );
 }
 
 export default App;
