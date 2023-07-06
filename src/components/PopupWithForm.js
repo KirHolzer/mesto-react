@@ -5,6 +5,7 @@ export default function PopupWithForm({
   title,
   isOpen,
   onClose,
+  onSubmit,
   children,
   saveText,
 }) {
@@ -22,6 +23,7 @@ export default function PopupWithForm({
           action="#"
           name={`profile-${name}-form`}
           noValidate=""
+          onSubmit={onSubmit}
         >
           {children}
           <button className="button popup__save-button" type="submit">

@@ -1,38 +1,17 @@
-import { useState, useEffect } from "react";
-import avatar from "../images/Jacques-Yves-Cousteau.png";
-import { api } from "../utils/api";
+import { useContext } from "react";
 import Card from "./Card";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 export default function Main({
   onEditAvatar,
   onEditProfile,
   onAddPlace,
   onCardClick,
+  onCardLike,
+  onCardDelete,
+  cards,
 }) {
-  const [userName, setUserName] = useState("Жак-Ив Кусто");
-  const [userDescription, setUserDescription] = useState(
-    "Исследователь океана"
-  );
-  const [userAvatar, setUserAvatar] = useState(avatar);
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api
-      .getUser()
-      .then((user) => {
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setUserAvatar(user.avatar);
-      })
-      .catch((error) => console.log("Error: ", error));
-
-    api
-      .getInitialCards()
-      .then((fetchedCards) => {
-        setCards(fetchedCards);
-      })
-      .catch((error) => console.log("Error: ", error));
-  }, []);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
@@ -40,14 +19,14 @@ export default function Main({
         <div className="profile__avatar-container">
           <img
             className="profile__avatar"
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="Изображение профиля"
           />
           <button className="profile__avatar-button" onClick={onEditAvatar} />
         </div>
         <div className="profile__info">
           <div className="profile__title-container">
-            <h1 className="profile__name">{userName}</h1>
+            <h1 className="profile__name">{currentUser.name}</h1>
             <button
               className="button profile__edit-button"
               type="button"
@@ -55,7 +34,7 @@ export default function Main({
               onClick={onEditProfile}
             />
           </div>
-          <p className="profile__profession">{userDescription}</p>
+          <p className="profile__profession">{currentUser.about}</p>
         </div>
         <button
           className="button profile__add-button"
@@ -68,7 +47,13 @@ export default function Main({
         <ul className="list elements__grid-table">
           {cards ? (
             cards.map((card) => (
-              <Card key={card._id} onCardClick={onCardClick} card={card} />
+              <Card
+                key={card._id}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+                card={card}
+              />
             ))
           ) : (
             <h2>Ошибка при загрузке карточек</h2>
