@@ -47,13 +47,15 @@ export default function Main({
         <ul className="list elements__grid-table">
           {cards ? (
             cards.map((card) => (
-              <Card
-                key={card._id}
-                onCardClick={onCardClick}
-                onCardLike={onCardLike}
-                onCardDelete={onCardDelete}
-                card={card}
-              />
+              <li className="elements__grid-item">
+                <Card
+                  key={card._id}
+                  onCardClick={onCardClick}
+                  onCardLike={onCardLike}
+                  onCardDelete={onCardDelete}
+                  card={card}
+                />
+              </li>
             ))
           ) : (
             <h2>Ошибка при загрузке карточек</h2>

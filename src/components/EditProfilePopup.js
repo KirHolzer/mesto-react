@@ -10,7 +10,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   React.useEffect(() => {
     setName(currentUser.name);
     setAbout(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +19,14 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       about,
     });
   };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleAboutChange = (e) => {
+    setAbout(e.target.value)
+  }
 
   return (
     <PopupWithForm
@@ -36,9 +44,8 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         name="name"
         placeholder="Имя"
         defaultValue={currentUser.name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
+        onChange={handleNameChange}
+        value={name}
         minLength={2}
         maxLength={40}
         required=""
@@ -51,9 +58,8 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         name="job"
         placeholder="О себе"
         defaultValue={currentUser.about}
-        onChange={(e) => {
-          setAbout(e.target.value);
-        }}
+        onChange={handleAboutChange}
+        value={about}
         minLength={2}
         maxLength={200}
         required=""

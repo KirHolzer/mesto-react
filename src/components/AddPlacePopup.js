@@ -18,6 +18,14 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     });
   };
 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleLinkChange = (e) => {
+    setLink(e.target.value)
+  }
+
   return (
     <PopupWithForm
       name="new-place"
@@ -33,9 +41,8 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         type="text"
         name="name"
         placeholder="Название"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
+        onChange={handleNameChange}
+        value={name}
         minLength={2}
         maxLength={30}
         required=""
@@ -47,9 +54,8 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         type="url"
         name="link"
         placeholder="Ссылка на картинку"
-        onChange={(e) => {
-          setLink(e.target.value);
-        }}
+        onChange={handleLinkChange}
+        value={link}
         required=""
       />
       <span className="popup__error url-input-error" />

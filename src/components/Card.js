@@ -20,7 +20,7 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   return (
-    <li className="elements__grid-item">
+    <>
       <div className="elements__image-box" onClick={handleClick}>
         <img className="elements__image" src={card.link} alt={card.name} />
       </div>
@@ -46,6 +46,6 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
           <p className="elements__likes">{card.likes.length}</p>
         </div>
       </div>
-    </li>
+      </>
   );
 }
