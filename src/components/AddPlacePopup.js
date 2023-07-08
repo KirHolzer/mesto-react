@@ -42,7 +42,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         name="name"
         placeholder="Название"
         onChange={handleNameChange}
-        value={name}
+        value={name || ''}
         minLength={2}
         maxLength={30}
         required=""
@@ -55,7 +55,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         name="link"
         placeholder="Ссылка на картинку"
         onChange={handleLinkChange}
-        value={link}
+        value={link || ''}
         required=""
       />
       <span className="popup__error url-input-error" />

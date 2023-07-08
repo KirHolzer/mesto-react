@@ -93,7 +93,6 @@ function App() {
   }
 
   function handleUpdateUser(profileInfo) {
-    console.log(profileInfo);
     api
       .editProfile(profileInfo)
       .then((user) => {

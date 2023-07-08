@@ -27,7 +27,6 @@ export default class Api {
   }
 
   editProfile(userInfo) {
-    console.log('user INFO', userInfo)
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -66,7 +65,6 @@ export default class Api {
   }
 
   updateAvatar(avatar) {
-    console.log(avatar)
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,

@@ -47,9 +47,8 @@ export default function Main({
         <ul className="list elements__grid-table">
           {cards ? (
             cards.map((card) => (
-              <li className="elements__grid-item">
+              <li key={card._id} className="elements__grid-item">
                 <Card
-                  key={card._id}
                   onCardClick={onCardClick}
                   onCardLike={onCardLike}
                   onCardDelete={onCardDelete}
